@@ -4,6 +4,8 @@ project(PoGo)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES
+    PoGo/src/Chromosome.cpp
+    PoGo/src/Chromosome.h
     PoGo/src/Coordinates.h
     PoGo/src/CoordinateWrapper.cpp
     PoGo/src/CoordinateWrapper.h
@@ -16,6 +18,8 @@ set(SOURCE_FILES
     PoGo/src/FastaParser.h
     PoGo/src/GeneEntry.cpp
     PoGo/src/GeneEntry.h
+    PoGo/src/GenomeFastaParser.cpp
+    PoGo/src/GenomeFastaParser.h
     PoGo/src/Globals.cpp
     PoGo/src/Globals.h
     PoGo/src/GTFParser.cpp

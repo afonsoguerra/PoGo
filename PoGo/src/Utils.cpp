@@ -1,4 +1,6 @@
 #include "Utils.h"
+#include <iostream>
+#include <stdexcept>
 
 std::string remove_ptms(const std::string& sequence) {
 	std::string tmp = sequence;
@@ -241,6 +243,13 @@ std::string coordinates_to_gct_string(std::vector<GenomeCoordinates> const& coor
 
 GenomeCoordinates extract_coordinates_from_gtf_line(std::vector<std::string> const&tokens) {
 	GenomeCoordinates coord;
+	
+	// Check if we have enough tokens
+	if (tokens.size() < 9) {
+		std::cerr << "Warning: GTF line has insufficient fields (" << tokens.size() << " < 9), skipping" << std::endl;
+		throw std::out_of_range("GTF line has insufficient fields");
+	}
+	
 	coord.chr = EnumStringMapper::string_to_chromosome(tokens.at(0));
 	if (coord.chr.isScaffold()) {
 		coord.chrscaf = tokens.at(0);
